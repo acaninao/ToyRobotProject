@@ -12,7 +12,7 @@ namespace ToyRobot {
 	{
 		Board gameboard;
 	public:
-		CommandDispatcher(Board board);
+		CommandDispatcher(Board& board);
 		Robot ExecuteCommand(string command);
 	};
 }

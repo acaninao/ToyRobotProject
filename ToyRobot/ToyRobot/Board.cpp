@@ -11,7 +11,7 @@ namespace ToyRobot {
 		robot = Robot();
 	}
 
-	Board::Board(int xlength, int ylength, Robot toyrobot)
+	Board::Board(int xlength, int ylength, Robot& toyrobot)
 		: xsize(xlength), ysize(ylength), robot(toyrobot) {}
 
 	Robot Board::GetRobot()

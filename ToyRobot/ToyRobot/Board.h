@@ -15,7 +15,7 @@ namespace ToyRobot {
 
 	public:
 		Board();
-		Board(int xlength, int ylength, Robot toyrobot);
+		Board(int xlength, int ylength, Robot& toyrobot);
 
 		Robot GetRobot();
 		void SetRobot(Robot toyrobot);

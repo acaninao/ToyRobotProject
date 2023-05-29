@@ -5,14 +5,17 @@
 using namespace std;
 
 namespace ToyRobot {
-    CommandDispatcher::CommandDispatcher(Board board)
+    CommandDispatcher::CommandDispatcher(Board& board)
     {
         gameboard = board;
     }
 
     Robot CommandDispatcher::ExecuteCommand(string command)
     {
-        Robot robot;
+        Robot robot = gameboard.GetRobot();
+        int maxx = gameboard.GetXSize();
+        int maxy = gameboard.GetYSize();
+
         CommandParser cmdparser(command);
         string maincmd = cmdparser.GetMainCommand();
 
@@ -21,11 +24,20 @@ namespace ToyRobot {
             int y = cmdparser.GetYCoordinate();
             Direction dir = cmdparser.GetDirection();
 
-            robot = gameboard.GetRobot();
-
-            int maxx = gameboard.GetXSize();
-            int maxy = gameboard.GetYSize();
             robot.SetLocation(x, y, dir, maxx, maxy);
+        }
+        else if (maincmd == "MOVE")
+        {
+            robot.Move(maxx, maxy);
+        }
+        else if (maincmd == "LEFT") {
+            robot.RotateLeft();
+        }
+        else if (maincmd == "RIGHT") {
+            robot.RotateRight();
+        }
+        else if (maincmd == "REPORT") {
+            robot.ReportLocation();
         }
         else {
             cout << "Command ignored!\n";
@@ -33,5 +45,4 @@ namespace ToyRobot {
 
         return robot;
     }
-
 }

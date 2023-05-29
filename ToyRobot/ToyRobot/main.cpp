@@ -22,15 +22,17 @@ int main() {
 	Robot robot;
 	Robot currentrobot;
 	Board board(xsize, ysize, robot);
-	CommandDispatcher dispatcher(board);
 
 	while (1) {
 		board.DisplayBoard();
+
 		cout << "Enter command: " << endl;
 		getline(cin, command);
 		if (command == "quit") {
 			break;
 		}
+
+		CommandDispatcher dispatcher(board);
 		currentrobot = dispatcher.ExecuteCommand(command);
 		board.SetRobot(currentrobot);
 	}
