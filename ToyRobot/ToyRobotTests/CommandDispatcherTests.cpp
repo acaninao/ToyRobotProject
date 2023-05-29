@@ -52,6 +52,45 @@ namespace ToyRobotTests
 			Assert::AreEqual(ToString(Direction::Undefined), ToString(result.GetDirection()));
 		}
 
+		TEST_METHOD(TestPlaceNoXCoord)
+		{
+			Robot robot;
+			Board board(5, 5, robot);
+			CommandDispatcher dispatcher(board);
+
+			Robot result = dispatcher.ExecuteCommand("PLACE ");
+
+			Assert::AreEqual(0, result.GetXCoord());
+			Assert::AreEqual(0, result.GetYCoord());
+			Assert::AreEqual(ToString(Direction::Undefined), ToString(result.GetDirection()));
+		}
+
+		TEST_METHOD(TestPlaceNoYCoord)
+		{
+			Robot robot;
+			Board board(5, 5, robot);
+			CommandDispatcher dispatcher(board);
+
+			Robot result = dispatcher.ExecuteCommand("PLACE 5,");
+
+			Assert::AreEqual(0, result.GetXCoord());
+			Assert::AreEqual(0, result.GetYCoord());
+			Assert::AreEqual(ToString(Direction::Undefined), ToString(result.GetDirection()));
+		}
+
+		TEST_METHOD(TestPlaceNoDirection)
+		{
+			Robot robot;
+			Board board(5, 5, robot);
+			CommandDispatcher dispatcher(board);
+
+			Robot result = dispatcher.ExecuteCommand("PLACE 5,3");
+
+			Assert::AreEqual(0, result.GetXCoord());
+			Assert::AreEqual(0, result.GetYCoord());
+			Assert::AreEqual(ToString(Direction::Undefined), ToString(result.GetDirection()));
+		}
+
 		TEST_METHOD(TestLeftValid)
 		{
 			Robot robot(3, 4, Direction::East);

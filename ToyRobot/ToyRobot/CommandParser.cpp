@@ -33,14 +33,14 @@ namespace ToyRobot {
 	int CommandParser::GetXCoordinate()
 	{
 		string delimiter = ",";
-		size_t maxlength = tokens[1].length() + 1;
+		size_t maxlength = tokens.at(1).length() + 1;
 		char* nexttoken = NULL;
 
 		char* convertedstring = (char *)malloc(maxlength);
 		if (convertedstring == NULL) {
 			return -1;
 		}
-		strcpy_s(convertedstring, maxlength, tokens[1].c_str());
+		strcpy_s(convertedstring, maxlength, tokens.at(1).c_str());
 		char* token = strtok_s(convertedstring, ",", &nexttoken);
 		int x = atoi(token);
 
@@ -52,20 +52,23 @@ namespace ToyRobot {
 	int CommandParser::GetYCoordinate()
 	{
 		string delimiter = ",";
-		size_t maxlength = tokens[1].length() + 1;
+		size_t maxlength = tokens.at(1).length() + 1;
 		char* nexttoken = NULL;
 
 		char* convertedstring = (char*)malloc(maxlength);
 		if (convertedstring == NULL) {
 			return -1;
 		}
-		strcpy_s(convertedstring, maxlength, tokens[1].c_str());
+		strcpy_s(convertedstring, maxlength, tokens.at(1).c_str());
 
 		char* token = strtok_s(convertedstring, ",", &nexttoken);
 		token = strtok_s(NULL, ",", &nexttoken);
+		if (token == NULL) {
+			free(convertedstring);
+			throw std::invalid_argument("y coordinate is not defined");
+		}
 
 		int y = atoi(token);
-
 		free(convertedstring);
 
 		return y;
@@ -86,6 +89,10 @@ namespace ToyRobot {
 		char* token = strtok_s(convertedstring, ",", &nexttoken);
 		token = strtok_s(NULL, ",", &nexttoken);
 		token = strtok_s(NULL, ",", &nexttoken);
+		if (token == NULL) {
+			free(convertedstring);
+			throw std::invalid_argument("direction is not defined");
+		}
 
 		if (strcmp(token, "NORTH") == 0) {
 			direction = Direction::North;

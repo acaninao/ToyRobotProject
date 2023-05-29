@@ -21,11 +21,16 @@ namespace ToyRobot {
 
         if (maincmd == "PLACE")
         {
-            int x = cmdparser.GetXCoordinate();
-            int y = cmdparser.GetYCoordinate();
-            Direction dir = cmdparser.GetDirection();
+            try {
+                int x = cmdparser.GetXCoordinate();
+                int y = cmdparser.GetYCoordinate();
+                Direction dir = cmdparser.GetDirection();
 
-            robot.SetLocation(x, y, dir, maxx, maxy);
+                robot.SetLocation(x, y, dir, maxx, maxy);
+            }
+            catch (...) {
+                return robot;
+            }
         }
         else if (maincmd == "MOVE")
         {

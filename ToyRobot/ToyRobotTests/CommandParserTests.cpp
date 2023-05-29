@@ -37,6 +37,54 @@ namespace ToyRobotTests
 			Assert::AreEqual(ToString(Direction::North), ToString(parser.GetDirection()));
 		}
 
+		TEST_METHOD(TestParsePlaceNoXCoord) {
+			string expectedmaincmd = "PLACE";
+			CommandParser parser("PLACE ");
+
+			Assert::AreEqual(expectedmaincmd, parser.GetMainCommand());
+
+			try {
+				parser.GetXCoordinate();
+				Microsoft::VisualStudio::CppUnitTestFramework::Assert::Fail();
+			}
+			catch (...) {
+				// Passes if exception is thrown.
+			}
+		}
+
+		TEST_METHOD(TestParsePlaceNoYCoord) {
+			string expectedmaincmd = "PLACE";
+			CommandParser parser("PLACE 2,");
+
+			Assert::AreEqual(expectedmaincmd, parser.GetMainCommand());
+			Assert::AreEqual(2, parser.GetXCoordinate());
+
+			try {
+				parser.GetYCoordinate();
+				Microsoft::VisualStudio::CppUnitTestFramework::Assert::Fail();
+			}
+			catch (...) {
+				// Passes if exception is thrown.
+			}
+		}
+
+		TEST_METHOD(TestParsePlaceNoDirection) {
+			string expectedmaincmd = "PLACE";
+			CommandParser parser("PLACE 2,3");
+
+			Assert::AreEqual(expectedmaincmd, parser.GetMainCommand());
+			Assert::AreEqual(2, parser.GetXCoordinate());
+			Assert::AreEqual(3, parser.GetYCoordinate());
+
+			try {
+				parser.GetDirection();
+				Microsoft::VisualStudio::CppUnitTestFramework::Assert::Fail();
+			}
+			catch (...) {
+				// Passes if exception is thrown.
+			}
+		}
+
 		TEST_METHOD(TestParseMoveValid)
 		{
 			string expectedmaincmd = "MOVE";
