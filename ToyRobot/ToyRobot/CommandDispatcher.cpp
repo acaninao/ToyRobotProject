@@ -19,7 +19,8 @@ namespace ToyRobot {
         CommandParser cmdparser(command);
         string maincmd = cmdparser.GetMainCommand();
 
-        if (maincmd == "PLACE") {
+        if (maincmd == "PLACE")
+        {
             int x = cmdparser.GetXCoordinate();
             int y = cmdparser.GetYCoordinate();
             Direction dir = cmdparser.GetDirection();

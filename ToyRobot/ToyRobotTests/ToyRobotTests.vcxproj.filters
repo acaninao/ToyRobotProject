@@ -24,6 +24,9 @@
     <ClCompile Include="RobotTests.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="CommandParserTests.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">

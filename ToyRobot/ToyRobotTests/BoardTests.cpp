@@ -1,7 +1,6 @@
 #include "pch.h"
 #include "CppUnitTest.h"
 #include "../ToyRobot/Board.h"
-#include "Helper.h"
 
 using namespace ToyRobot;
 

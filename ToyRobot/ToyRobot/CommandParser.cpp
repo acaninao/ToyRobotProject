@@ -60,6 +60,7 @@ namespace ToyRobot {
 			return -1;
 		}
 		strcpy_s(convertedstring, maxlength, tokens[1].c_str());
+
 		char* token = strtok_s(convertedstring, ",", &nexttoken);
 		token = strtok_s(NULL, ",", &nexttoken);
 
@@ -72,6 +73,7 @@ namespace ToyRobot {
 
 	Direction CommandParser::GetDirection()
 	{
+		Direction direction = Direction::Undefined;
 		string delimiter = ",";
 		size_t maxlength = tokens[1].length() + 1;
 		char* nexttoken = NULL;
@@ -86,18 +88,20 @@ namespace ToyRobot {
 		token = strtok_s(NULL, ",", &nexttoken);
 
 		if (strcmp(token, "NORTH") == 0) {
-			return Direction::North;
+			direction = Direction::North;
 		}
 		if (strcmp(token, "SOUTH") == 0) {
-			return Direction::South;
+			direction = Direction::South;
 		}
 		if (strcmp(token, "EAST") == 0) {
-			return Direction::East;
+			direction = Direction::East;
 		}
 		if (strcmp(token, "WEST") == 0) {
-			return Direction::West;
+			direction = Direction::West;
 		}
 
-		return Direction::Undefined;
+		free(convertedstring);
+
+		return direction;
 	}
 }

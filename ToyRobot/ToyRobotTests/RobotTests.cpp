@@ -1,11 +1,11 @@
 #include "pch.h"
 #include "CppUnitTest.h"
 #include "../ToyRobot/Robot.h"
-#include "Helper.h"
 
 using namespace ToyRobot;
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
+using namespace std;
 
 namespace ToyRobotTests
 {
