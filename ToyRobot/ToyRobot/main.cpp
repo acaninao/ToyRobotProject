@@ -7,17 +7,19 @@ using namespace ToyRobot;
 using namespace std;
 
 int main() {
-	int xsize;
-	int ysize;
+	int xsize = 5;
+	int ysize = 5;
 	string command;
 
 	cout << "Welcome to the Toy Robot Project\n";
+	/*
 	cout << "Enter the size of the board:\n";
 	cout << "x-axis: ";
 	cin >> xsize;
 	cout << "y-axis: ";
 	cin >> ysize;
 	cin.ignore();
+	*/
 
 	Robot robot;
 	Robot currentrobot;
