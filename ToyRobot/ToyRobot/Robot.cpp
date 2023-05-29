@@ -1,5 +1,9 @@
 #include "Robot.h"
 #include "Direction.h"
+#include <string>
+#include <iostream>
+
+using namespace std;
 
 namespace ToyRobot {
 	Robot::Robot() {
@@ -28,5 +32,27 @@ namespace ToyRobot {
 	Direction Robot::GetDirection()
 	{
 		return direction;
+	}
+
+	void Robot::SetLocation(int x, int y, Direction dir, int maxxcoord, int maxycoord)
+	{
+		if (x < 0 || x >= maxxcoord) {
+			cout << "Invalid x coordinate!\n";
+			return;
+		}
+
+		if (y < 0 || y >= maxycoord) {
+			cout << "Invalid y coordinate!\n";
+			return;
+		}
+
+		if (dir == Undefined) {
+			cout << "Invalid direction!\n";
+			return;
+		}
+
+		xcoord = x;
+		ycoord = y;
+		direction = dir;
 	}
 }

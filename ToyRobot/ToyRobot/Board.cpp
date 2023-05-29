@@ -1,41 +1,70 @@
 #include "Board.h"
 #include <iostream>
 
+using namespace std;
+
 namespace ToyRobot {
+	Board::Board()
+	{
+		xsize = 0;
+		ysize = 0;
+		robot = Robot();
+	}
+
 	Board::Board(int xlength, int ylength, Robot toyrobot)
 		: xsize(xlength), ysize(ylength), robot(toyrobot) {}
+
+	Robot Board::GetRobot()
+	{
+		return robot;
+	}
+
+	void Board::SetRobot(Robot toyrobot)
+	{
+		robot = toyrobot;
+	}
+
+	int Board::GetXSize()
+	{
+		return xsize;
+	}
+
+	int Board::GetYSize()
+	{
+		return ysize;
+	}
 
 	void Board::DisplayBoard()
 	{
 		for (int yctr = 0; yctr < ysize; yctr++) {
-			std::cout << ".";
+			cout << ".";
 			for (int xctr = 0; xctr < xsize; xctr++) {
-				std::cout << "___.";
+				cout << "___.";
 			}
-			std::cout << "\n";
-			std::cout << "|";
+			cout << "\n";
+			cout << "|";
 			for (int xctr = 0; xctr < xsize; xctr++) {
 				Direction robotdir = robot.GetDirection();
 				int maxycoord = ysize - 1;
 				if (robot.GetXCoord() == xctr && maxycoord - robot.GetYCoord() == yctr && robotdir != Undefined)
 				{
-					std::cout << " " << Board::GetRobotDisplay(robotdir) << " |";
+					cout << " " << Board::GetRobotIcon(robotdir) << " |";
 				}
 				else {
-					std::cout << "   |";
+					cout << "   |";
 				}
 			}
-			std::cout << "\n";
+			cout << "\n";
 		}
 
-		std::cout << ".";
+		cout << ".";
 		for (int xctr = 0; xctr < xsize; xctr++) {
-			std::cout << "___.";
+			cout << "___.";
 		}
-		std::cout << "\n";
+		cout << "\n";
 	}
 
-	std::string Board::GetRobotDisplay(Direction direction)
+	string Board::GetRobotIcon(Direction direction)
 	{
 		switch (direction) {
 		case North:

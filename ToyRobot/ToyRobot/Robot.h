@@ -16,6 +16,7 @@ namespace ToyRobot {
 		int GetXCoord();
 		int GetYCoord();
 		Direction GetDirection();
+		void SetLocation(int x, int y, Direction dir, int maxxcoord, int maxycoord);
 	};
 }
 

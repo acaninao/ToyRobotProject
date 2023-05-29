@@ -4,6 +4,8 @@
 #include "Robot.h"
 #include <string>
 
+using namespace std;
+
 namespace ToyRobot {
 	class Board
 	{
@@ -12,10 +14,17 @@ namespace ToyRobot {
 		Robot robot;
 
 	public:
+		Board();
 		Board(int xlength, int ylength, Robot toyrobot);
 
+		Robot GetRobot();
+		void SetRobot(Robot toyrobot);
+
+		int GetXSize();
+		int GetYSize();
+
 		void DisplayBoard();
-		std::string GetRobotDisplay(Direction direction);
+		string GetRobotIcon(Direction direction);
 	};
 }
 

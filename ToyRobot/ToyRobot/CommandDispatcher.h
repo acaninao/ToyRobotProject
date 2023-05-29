@@ -3,12 +3,17 @@
 
 #include <string>
 #include "Robot.h"
+#include "Board.h"
+
+using namespace std;
 
 namespace ToyRobot {
 	class CommandDispatcher
 	{
+		Board gameboard;
 	public:
-		Robot ExecuteCommand(std::string command, Robot robot);
+		CommandDispatcher(Board board);
+		Robot ExecuteCommand(string command);
 	};
 }
 
