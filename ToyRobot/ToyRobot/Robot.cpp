@@ -2,6 +2,7 @@
 #include "Direction.h"
 #include <string>
 #include <iostream>
+#include <sstream>
 
 using namespace ToyRobot;
 using namespace std;
@@ -123,7 +124,7 @@ namespace ToyRobot {
 		}
 	}
 
-	void Robot::ReportLocation()
+	string Robot::ReportLocation()
 	{
 		string dirtext;
 
@@ -139,6 +140,8 @@ namespace ToyRobot {
 			dirtext = "Undefined";
 		}
 
-		cout << "Output: " << xcoord << "," << ycoord << "," << dirtext << endl;
+		stringstream stream;
+		stream << "Output: " << xcoord << "," << ycoord << "," << dirtext << endl;
+		return stream.str();
 	}
 }

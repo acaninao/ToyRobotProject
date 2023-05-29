@@ -2,6 +2,7 @@
 #define ROBOT_H
 
 #include "Direction.h"
+#include <string>
 
 namespace ToyRobot {
 	class Robot
@@ -20,7 +21,7 @@ namespace ToyRobot {
 		void Move(int maxxcoord, int maxycoord);
 		void RotateLeft();
 		void RotateRight();
-		void ReportLocation();
+		std::string ReportLocation();
 	};
 }
 

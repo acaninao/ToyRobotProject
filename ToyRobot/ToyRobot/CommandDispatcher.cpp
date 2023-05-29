@@ -37,7 +37,8 @@ namespace ToyRobot {
             robot.RotateRight();
         }
         else if (maincmd == "REPORT") {
-            robot.ReportLocation();
+            string message = robot.ReportLocation();
+            cout << message;
         }
         else {
             cout << "Command ignored!\n";
