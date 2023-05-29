@@ -3,13 +3,14 @@
 #include <string>
 #include <iostream>
 
+using namespace ToyRobot;
 using namespace std;
 
 namespace ToyRobot {
 	Robot::Robot() {
 		xcoord = 0;
 		ycoord = 0;
-		direction = Undefined;
+		direction = Direction::Undefined;
 	}
 
 	Robot::Robot(int x, int y, Direction dir)
@@ -46,7 +47,7 @@ namespace ToyRobot {
 			return;
 		}
 
-		if (dir == Undefined) {
+		if (dir == Direction::Undefined) {
 			cout << "Invalid direction!\n";
 			return;
 		}
@@ -58,7 +59,7 @@ namespace ToyRobot {
 
 	void Robot::Move(int maxxcoord, int maxycoord)
 	{
-		if (direction == North) {
+		if (direction == Direction::North) {
 			if (ycoord+1 < maxycoord) {
 				ycoord++;
 			}
@@ -66,21 +67,21 @@ namespace ToyRobot {
 				cout << "Cannot move up!\n";
 			}
 
-		} else if (direction == South) {
+		} else if (direction == Direction::South) {
 			if (ycoord > 0) {
 				ycoord--;
 			}
 			else {
 				cout << "Cannot move down!\n";
 			}
-		} else if (direction == East) {
+		} else if (direction == Direction::East) {
 			if (xcoord+1 < maxxcoord) {
 				xcoord++;
 			}
 			else {
 				cout << "Cannot move right!\n";
 			}
-		} else if (direction == West) {
+		} else if (direction == Direction::West) {
 			if (xcoord > 0) {
 				xcoord--;
 			}
@@ -92,33 +93,33 @@ namespace ToyRobot {
 
 	void Robot::RotateLeft()
 	{
-		if (direction == North) {
-			direction = West;
+		if (direction == Direction::North) {
+			direction = Direction::West;
 		}
-		else if (direction == West) {
-			direction = South;
+		else if (direction == Direction::West) {
+			direction = Direction::South;
 		}
-		else if (direction == South) {
-			direction = East;
+		else if (direction == Direction::South) {
+			direction = Direction::East;
 		}
-		else if (direction = East) {
-			direction = North;
+		else if (direction == Direction::East) {
+			direction = Direction::North;
 		}
 	}
 
 	void Robot::RotateRight()
 	{
-		if (direction == North) {
-			direction = East;
+		if (direction == Direction::North) {
+			direction = Direction::East;
 		}
-		else if (direction == East) {
-			direction = South;
+		else if (direction == Direction::East) {
+			direction = Direction::South;
 		}
-		else if (direction == South) {
-			direction = West;
+		else if (direction == Direction::South) {
+			direction = Direction::West;
 		}
-		else if (direction = West) {
-			direction = North;
+		else if (direction == Direction::West) {
+			direction = Direction::North;
 		}
 	}
 
@@ -126,22 +127,16 @@ namespace ToyRobot {
 	{
 		string dirtext;
 
-		switch (direction) {
-		case North:
+		if (direction == Direction::North) {
 			dirtext = "NORTH";
-			break;
-		case South:
+		} else if (direction == Direction::South) {
 			dirtext = "SOUTH";
-			break;
-		case West:
+		} else if (direction == Direction::West) {
 			dirtext = "WEST";
-			break;
-		case East:
+		} else if (direction == Direction::East) {
 			dirtext = "EAST";
-			break;
-		default:
+		} else {
 			dirtext = "Undefined";
-			break;
 		}
 
 		cout << "Output: " << xcoord << "," << ycoord << "," << dirtext << endl;

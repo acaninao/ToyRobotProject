@@ -2,13 +2,13 @@
 #define DIRECTION_H
 
 namespace ToyRobot {
-	typedef enum DIRECTION {
+	enum class Direction {
 		Undefined,
 		North,
 		South,
 		East,
 		West
-	} Direction;
+	};
 }
 
 #endif DIRECTION_H

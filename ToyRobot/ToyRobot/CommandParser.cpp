@@ -1,4 +1,5 @@
 #include "CommandParser.h"
+#include "Direction.h"
 #include <vector>
 #include <iostream>
 #include <sstream>
@@ -77,7 +78,7 @@ namespace ToyRobot {
 
 		char* convertedstring = (char*)malloc(maxlength);
 		if (convertedstring == NULL) {
-			return Undefined;
+			return Direction::Undefined;
 		}
 		strcpy_s(convertedstring, maxlength, tokens[1].c_str());
 		char* token = strtok_s(convertedstring, ",", &nexttoken);
@@ -85,18 +86,18 @@ namespace ToyRobot {
 		token = strtok_s(NULL, ",", &nexttoken);
 
 		if (strcmp(token, "NORTH") == 0) {
-			return North;
+			return Direction::North;
 		}
 		if (strcmp(token, "SOUTH") == 0) {
-			return South;
+			return Direction::South;
 		}
 		if (strcmp(token, "EAST") == 0) {
-			return East;
+			return Direction::East;
 		}
 		if (strcmp(token, "WEST") == 0) {
-			return West;
+			return Direction::West;
 		}
 
-		return Undefined;
+		return Direction::Undefined;
 	}
 }

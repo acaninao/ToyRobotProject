@@ -1,6 +1,7 @@
 #include "Board.h"
 #include <iostream>
 
+using namespace ToyRobot;
 using namespace std;
 
 namespace ToyRobot {
@@ -46,7 +47,7 @@ namespace ToyRobot {
 			for (int xctr = 0; xctr < xsize; xctr++) {
 				Direction robotdir = robot.GetDirection();
 				int maxycoord = ysize - 1;
-				if (robot.GetXCoord() == xctr && maxycoord - robot.GetYCoord() == yctr && robotdir != Undefined)
+				if (robot.GetXCoord() == xctr && maxycoord - robot.GetYCoord() == yctr && robotdir != Direction::Undefined)
 				{
 					cout << " " << Board::GetRobotIcon(robotdir) << " |";
 				}
@@ -67,13 +68,13 @@ namespace ToyRobot {
 	string Board::GetRobotIcon(Direction direction)
 	{
 		switch (direction) {
-		case North:
+		case Direction::North:
 			return "^";
-		case South:
+		case Direction::South:
 			return "v";
-		case East:
+		case Direction::East:
 			return ">";
-		case West:
+		case Direction::West:
 			return "<";
 		}
 
